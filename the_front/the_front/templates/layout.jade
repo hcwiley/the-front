@@ -1,0 +1,46 @@
+{% load compressed %}
+doctype 5
+html(lang="en")
+  head
+    title=PAGE_TITLE
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    {% compressed_css 'client' %}
+    {% compressed_js 'client' %}
+    link(rel='icon', type='image/x-icon', href='./images/fav.png')
+  body
+    header.navbar
+      .logo-link
+        a(href='/')
+          img(src='#{STATIC_URL}img/corner.jpg')
+          h1 the front
+      nav.navbar(role="navigation")
+        .navbar-header
+          button(type="button" ,class="navbar-toggle" ,data-toggle="collapse" ,data-target="#bs-navbar-collapse-1")
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+        #bs-navbar-collapse-1.collapse.navbar-collapse
+          ul.nav.navbar-nav
+            li.brand
+              a(href='/artists') artists
+            li.brand
+              a(href='/news') news
+            li.brand
+              a(href='/about') about
+            li.brand
+              a(href='/archive') archive
+            li.brand
+              a(href='/press') press
+            li.brand
+              a(href='/contact') contact
+    #content.container
+      block content
+    footer.col-sm-12
+      .row
+        .brand
+          a(href='/') Home
+        .brand
+          a(href='/about') About
+        .brand
+          a(href='/contact') Contact
