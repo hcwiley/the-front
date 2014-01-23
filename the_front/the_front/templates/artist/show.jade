@@ -1,0 +1,14 @@
+extends layout
+
+block content
+  .col-sm-12
+    h1 #{artist.name}
+    h4 collection of work
+  .row
+    br
+  .col-sm-10.col-sm-offset-1
+    {% for image in artists_images %}
+    .col-sm-2
+      p #{image.name}
+      img(src="#{image.thumb()}")
+    {% endfor %}

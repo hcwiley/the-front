@@ -1,4 +1,14 @@
 extends layout
 
 block content
-  h1 hello world
+  .col-sm-12
+    h1 the front
+    h4 an artist collective
+  .row
+    br
+  .col-sm-10.col-sm-offset-1
+    {% for artist in artists %}
+    .col-sm-2
+      a(href='#{artist.get_absolute_url()}') #{artist.name}
+        img(src="#{artist.thumb()}")
+    {% endfor %}

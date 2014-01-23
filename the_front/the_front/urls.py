@@ -13,6 +13,8 @@ urlpatterns = patterns('',
      url(r'^contact$', 'the_front.views.contact', name='contact'),
      url(r'^about$', 'the_front.views.about', name='about'),
 
+     url(r'^artists', include('artist.urls')),
+
      url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
      url(r'^admin/', include(admin.site.urls)),
 )

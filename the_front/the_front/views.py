@@ -2,6 +2,7 @@ from django.shortcuts import render_to_response, redirect
 #from django.http import Http404
 from django.conf import settings
 from django.core.context_processors import csrf
+from artist.models import *
 
 def common_args(request):
     """
@@ -21,6 +22,8 @@ def common_args(request):
 
 def home(req):
   args = common_args(req)
+  args['artists'] = Artist.objects.all()
+  args['artists_images'] = ArtistMedia.objects.all()
   return render_to_response("index.jade", args)
   
 def contact(req):

@@ -1,0 +1,8 @@
+extends layout
+
+block content
+  {% for image in artists_images %}
+  .col-sm-2
+    p #{image.artist}
+    img(src="#{image.thumb()}")
+  {% endfor %}
