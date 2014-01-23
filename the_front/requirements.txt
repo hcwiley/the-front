@@ -1,0 +1,15 @@
+Django==1.5
+MySQL-python==1.2.3
+South==0.7.6
+python-memcached
+pyjade==1.5.2
+django-pipeline
+gunicorn
+stylus
+django-encrypted-fields
+django-admin-bootstrapped
+django-toolbelt
+dj-database-url
+dj-static
+static
+wsgiref
