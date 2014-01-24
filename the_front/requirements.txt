@@ -4,6 +4,5 @@ South==0.7.6
 python-memcached
 pyjade==1.5.2
 django-pipeline
-django-encrypted-fields
 django-admin-bootstrapped
 dj-database-url
