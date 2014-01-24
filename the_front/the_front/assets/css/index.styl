@@ -19,6 +19,13 @@ gradient(perc1, perc2, col1, col2)
 
 *
   font-family Helvetica, sans-serif
+  font-weight 300
+
+h1
+  font-variant small-caps
+  letter-spacing 2px
+h1,h2,h3,h4,h5,h6
+  font-weight 300
 
 p
   font-size 11pt
@@ -31,21 +38,18 @@ a:hover
   radius 2px
   background-color #fff
   shadow 0px 0px 35px rgba(0,0,0,0.3)
+hr
+  border-color #699
 hr.dashed
   border-style dashed
 
-html
-  height 100%
 html, body
   width 100%
-  //height 100%
+  height 100%
   background #fff
-  background-image url('../img/bg.png')
 
 header.navbar
-  //background #fff
   shadow(0px, 2px, 10px #777)
-  //border 5px solid #fff
   border-left none
   border-right none
   padding 0px
@@ -57,7 +61,8 @@ header.navbar
   .logo-link
     display inline-block
     background #fff
-    margin-top -40px
+    background-image url('../img/bg.png')
+    margin-top -38px
     height 150px
     width 160px
     shadow(0px, 1px, 5px #777)
@@ -72,12 +77,8 @@ header.navbar
       padding-top 0px
   nav.navbar
     display block
-    //shadow(0px, 0px, 3px $blue)
-    //background-image url('../img/bg.png')
-    //gradient(80%, 100%, col2:#efefef, col1:#fff)
     padding 0px
     radius(0px)
-    //padding-left 120px
     float none
     margin -100px auto 0px auto
     height 30px
@@ -89,6 +90,9 @@ header.navbar
       margin-top -7px
     span.icon-bar
       background #fff
+  .navbar-collapse
+    z-index 100
+    position relative
 
 @media (max-width: 900px)
   nav.navbar
@@ -101,9 +105,12 @@ header.navbar
       margin-left 60px
       li
         display block
+        margin-bottom 20px
         a
           padding-top 5px!important
           padding-bottom 5px!important
+  header.navbar
+    padding-left 10px
 
 .brand
   display inline-block
@@ -113,8 +120,61 @@ header.navbar
   font-variant small-caps
   font-size 15px
   a
-    padding-top 0px!important
-    padding-bottom 0px!important
+    padding 20px 0px
+    margin-top -14px
+  a:hover
+    background #699!important
+    color #fff
 
 #content
-  margin 80px auto
+  margin 60px auto
+  min-height 85%
+
+footer
+  background #bbb
+  height 30px
+  li.brand
+    font-weight 100
+    color #fff
+    margin-right 20px
+    padding 5px 0px
+    margin-top -1px!important
+    a
+      padding 6px 0px 7px 0px!important
+  .row
+    width 440px
+    margin 0px auto
+
+.artist-name-image
+  height 50px
+  overflow hidden
+  *
+    position absolute
+  p
+    text-align center
+    width 100%
+    //height 100%
+    line-height 50px
+    vertical-align middle
+    z-index 2
+    color #fff
+    text-shadow 0px 1px 3px #699
+    font-weight 400
+  img
+    width 100%
+    height auto
+    top 0
+    bottom 0
+    margin auto
+    filter url(filters.svg#grayscale)
+    filter gray
+    -webkit-filter grayscale(.7)
+.artist-name-image:hover
+  p
+    color #699
+  img
+    filter none
+    -webkit-filter grayscale(0)
+
+.img-thumbnail
+  border none

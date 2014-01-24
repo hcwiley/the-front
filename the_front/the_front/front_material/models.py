@@ -7,10 +7,11 @@ import datetime
 class FrontMedia(models.Model):
   name = models.CharField(max_length=100, blank=False, null=False, default="")
   video_link = models.CharField(max_length=255, blank=True, null=True, default="")
-  image = models.ImageField(upload_to='news_media/', default="", null=True, blank=True, editable=False)
-  thumbnail = models.ImageField(upload_to='news_media/', default="", null=True, blank=True, editable=False)
-  full_res_image = models.ImageField(upload_to='news_media/', default="", null=False, blank=False)
+  image = models.ImageField(upload_to='front_media/', default="", null=True, blank=True, editable=False)
+  thumbnail = models.ImageField(upload_to='front_media/', default="", null=True, blank=True, editable=False)
+  full_res_image = models.ImageField(upload_to='front_media/', default="", null=False, blank=False)
   is_default_image = models.BooleanField(default=False)
+  portrait = models.BooleanField(default=False)
 
   def __unicode__(self):
     return self.name
@@ -27,10 +28,13 @@ class FrontMedia(models.Model):
     import Image
     path = self.full_res_image.path
     image = Image.open(path)
-    r = float(image.size[1])/float(image.size[0])
-    image = image.resize((900, int(900*r)), Image.ANTIALIAS)
-    path = path.split(".")
-    path = "%s-small.%s" % (path[0], path[1])
+    image.thumbnail((900,900), Image.ANTIALIAS)
+    if self.portrait:
+      image = image.rotate(-90)
+    dot = path.rindex('.')
+    path = (path[:dot], path[dot:])
+    print path
+    path = "%s-small%s" % (path[0], path[1])
     image.save(path)
     path = path.split(settings.MEDIA_ROOT)
     self.image = "%s" % (path[1])
@@ -40,10 +44,12 @@ class FrontMedia(models.Model):
     import Image
     path = self.full_res_image.path
     image = Image.open(path)
-    r = float(image.size[1])/float(image.size[0])
-    image = image.resize((150, int(150*r)), Image.ANTIALIAS)
-    path = path.split(".")
-    path = "%s-thumb.%s" % (path[0], path[1])
+    image.thumbnail((250,250), Image.ANTIALIAS)
+    if self.portrait:
+      image = image.rotate(-90)
+    dot = path.rindex('.')
+    path = (path[:dot], path[dot:])
+    path = "%s-thumb%s" % (path[0], path[1])
     image.save(path)
     path = path.split(settings.MEDIA_ROOT)
     self.thumbnail = "%s" % (path[1])
@@ -55,6 +61,9 @@ class NewsArticle(models.Model):
   date = models.DateField(default=datetime.date.today)
   is_archived = models.BooleanField(default=False)
 
+  class Meta:
+    ordering = ['-date']
+  
   def __unicode__(self):
     return "%s (%s)" % (self.name, self.date)
 
