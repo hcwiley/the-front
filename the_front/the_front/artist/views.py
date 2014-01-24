@@ -17,6 +17,9 @@ def artist(req, slug):
   if len(artist) == 0:
     args['error'] = 'No artist found'
     return render_to_response("error.jade", args)
+  artist = artist[0]
   args['artist'] = artist
-  args['artists_images'] = ArtistMedia.objects.filter(artist=artist)
+  args['artist_images'] = ArtistMedia.objects.filter(artist=artist)
+  print args['artist_images']
   return render_to_response("artist/show.jade", args)
+

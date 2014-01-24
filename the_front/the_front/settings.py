@@ -176,6 +176,7 @@ INSTALLED_APPS = (
     'pipeline',
     'south',
     'artist',
+    'front_material',
 )
 
 # A sample logging configuration. The only tangible logging

@@ -14,6 +14,7 @@ urlpatterns = patterns('',
      url(r'^about$', 'the_front.views.about', name='about'),
 
      url(r'^artists', include('artist.urls')),
+     url(r'^news', include('front_material.news.urls')),
 
      url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
      url(r'^admin/', include(admin.site.urls)),
