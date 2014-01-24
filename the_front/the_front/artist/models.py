@@ -62,7 +62,7 @@ class ArtistMedia(models.Model):
     path = "%s-small.%s" % (path[0], path[1])
     image.save(path)
     path = path.split(settings.MEDIA_URL)
-    self.image = "%s" % (path[1])
+    self.image = "%s" % (path)
     super(ArtistMedia, self).save()
 
   def saveThumbnail(self):
@@ -75,6 +75,6 @@ class ArtistMedia(models.Model):
     path = "%s-thumb.%s" % (path[0], path[1])
     image.save(path)
     path = path.split(settings.MEDIA_URL)
-    self.thumbnail = "%s" % (path[1])
+    self.thumbnail = "%s" % (path)
     super(ArtistMedia, self).save()
 
