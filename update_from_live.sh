@@ -7,6 +7,6 @@ export PATH=$PATH:/home/hcwiley/webapps/timmy_hubot/bin/
 cp -r ./collected-static/* /home/hcwiley/webapps/the_front_static/
 source ../.env
 /usr/local/bin/python2.7 manage.py migrate
-$HOME/bin/pip install -r requirements.txt
+$HOME/bin/pip install --upgrade -r requirements.txt
 ../apache2/bin/restart
 exit
