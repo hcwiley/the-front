@@ -6,8 +6,4 @@ pyjade==1.5.2
 django-pipeline
 django-encrypted-fields
 django-admin-bootstrapped
-django-toolbelt
 dj-database-url
-dj-static
-static
-wsgiref

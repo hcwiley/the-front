@@ -31,7 +31,7 @@ class Migration(SchemaMigration):
 
         # Adding field 'ArtistMedia.frontmedia_ptr'
         db.add_column(u'artist_artistmedia', u'frontmedia_ptr',
-                      self.gf('django.db.models.fields.related.OneToOneField')(default=1, to=orm['front_material.FrontMedia'], unique=True, primary_key=True),
+                      self.gf('django.db.models.fields.related.OneToOneField')(default=-1, to=orm['front_material.FrontMedia'], unique=True, primary_key=True),
                       keep_default=False)
 
 
