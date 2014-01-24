@@ -11,3 +11,5 @@ class NewsArticleAdmin(admin.ModelAdmin):
 
 admin.site.register(NewsArticle, NewsArticleAdmin)
 admin.site.register(NewsMedia)
+admin.site.register(FrontInfo)
+admin.site.register(FAQ)

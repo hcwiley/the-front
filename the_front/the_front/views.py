@@ -3,7 +3,7 @@ from django.shortcuts import render_to_response, redirect
 from django.conf import settings
 from django.core.context_processors import csrf
 from artist.models import *
-from front_material.models import NewsArticle
+from front_material.models import NewsArticle, FrontInfo, FAQ
 
 def common_args(request):
     """
@@ -33,5 +33,8 @@ def contact(req):
   
 def about(req):
   args = common_args(req)
+  args['info'] = FrontInfo.objects.all()[0]
+  args['faqs'] = FAQ.objects.all()
+  args['artists'] = Artist.objects.all()
   return render_to_response("about.jade", args)
   

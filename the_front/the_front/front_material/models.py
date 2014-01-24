@@ -4,6 +4,18 @@ from django.utils.text import slugify
 from django.contrib.auth.models import User
 import datetime
 
+class FrontInfo(models.Model):
+  about = models.TextField(blank=True, null=True, default="")
+  def __unicode__(self):
+    return "About Copy"
+
+class FAQ(models.Model):
+  topic = models.CharField(max_length=100, blank=False, null=False, default="")
+  answer = models.TextField(blank=True, null=True, default="")
+
+  def __unicode__(self):
+    return self.topic
+
 class FrontMedia(models.Model):
   name = models.CharField(max_length=100, blank=False, null=False, default="")
   video_link = models.CharField(max_length=255, blank=True, null=True, default="")
