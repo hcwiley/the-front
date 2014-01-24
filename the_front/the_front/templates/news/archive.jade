@@ -2,11 +2,11 @@ extends layout
 
 block content
   .col-sm-10
-    h1.pull-right news
+    h1.pull-right archive
   .col-sm-12
     {% for article in news %}
     .col-sm-2
-        a(href='#{article.get_absolute_url()}')
+        a(href='#{article.get_absolute_url()}') #{article.name}
           p #{article}
-          img.img-thumbnail(src="#{article.thumb()}")
+          img(src="#{article.thumb()}")
     {% endfor %}

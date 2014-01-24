@@ -7,8 +7,13 @@ from the_front.views import common_args
 
 def home(req):
   args = common_args(req)
-  args['news'] = NewsArticle.objects.all()
+  args['news'] = NewsArticle.objects.filter(is_archived=False)
   return render_to_response("news/list.jade", args)
+
+def archive(req):
+  args = common_args(req)
+  args['news'] = NewsArticle.objects.filter(is_archived=True)
+  return render_to_response("news/archive.jade", args)
 
 def news(req, pk):
   args = common_args(req)
