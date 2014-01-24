@@ -5,3 +5,4 @@ local_settings.py
 create_django_webfaction.py
 cloneRepo.sh
 collected-static
+media
