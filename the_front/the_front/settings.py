@@ -145,6 +145,7 @@ TEMPLATE_LOADERS = (
         'django.template.loaders.app_directories.Loader',
         'django.template.loaders.eggs.Loader',
     )),
+    
 )
 
 MIDDLEWARE_CLASSES = (
@@ -169,6 +170,8 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_admin_bootstrapped.bootstrap3',
+    'django_admin_bootstrapped',
     'django.contrib.admin',
     'django.contrib.admindocs',
     'django_admin_bootstrapped',

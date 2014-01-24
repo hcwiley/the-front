@@ -4,8 +4,6 @@ South==0.7.6
 python-memcached
 pyjade==1.5.2
 django-pipeline
-gunicorn
-stylus
 django-encrypted-fields
 django-admin-bootstrapped
 django-toolbelt
