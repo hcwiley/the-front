@@ -16,6 +16,12 @@ class FAQ(models.Model):
   def __unicode__(self):
     return self.topic
 
+class Link(models.Model):
+  name = models.CharField(max_length=100, blank=False, null=False, default="")
+  url = models.CharField(max_length=255, blank=True, null=True, default="")
+  def __unicode__(self):
+    return self.name
+
 class FrontMedia(models.Model):
   name = models.CharField(max_length=100, blank=False, null=False, default="")
   video_link = models.CharField(max_length=255, blank=True, null=True, default="")
@@ -93,3 +99,32 @@ class NewsArticle(models.Model):
 
 class NewsMedia(FrontMedia):
   news_article = models.ForeignKey(NewsArticle)
+
+class Press(models.Model):
+  name = models.CharField(max_length=100, blank=False, null=False, default="")
+  text = models.TextField(blank=True, null=True, default="")
+  date = models.DateField(default=datetime.date.today)
+  is_archived = models.BooleanField(default=False)
+
+  class Meta:
+    ordering = ['-date']
+  
+  def __unicode__(self):
+    return "%s (%s)" % (self.name, self.date)
+
+  def thumb(self):
+    image = self.pressmedia_set.filter(is_default_image=True)
+    if len(image) == 0 :
+      image = self.pressmedia_set.all()
+    if len(image) == 0 :
+      return ""
+    image = image[0]
+    return image.thumb()
+
+  def get_absolute_url(self):
+    return "/press/%s-%s" % (self.date, self.pk)
+
+class PressMedia(FrontMedia):
+  press_article = models.ForeignKey(Press)
+class PressLink(Link):
+  press_article = models.ForeignKey(Press)

@@ -1,0 +1,12 @@
+extends layout
+
+block content
+  .col-sm-10
+    h1.pull-right press
+  .col-sm-12
+    {% for article in press %}
+    .col-sm-2
+        a(href='#{article.get_absolute_url()}')
+          p #{article}
+          img.img-thumbnail(src="#{article.thumb()}")
+    {% endfor %}
