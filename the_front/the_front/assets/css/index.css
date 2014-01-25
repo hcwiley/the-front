@@ -151,7 +151,7 @@ header.navbar .navbar-collapse {
 }
 #content {
   margin: 60px auto;
-  min-height: 85%;
+  min-height: 65%;
 }
 footer {
   background: #bbb;
@@ -207,7 +207,6 @@ footer .row:last-child p {
   top: 0;
   bottom: 0;
   margin: auto;
-  filter: url("filters.svg#grayscale");
   filter: #808080;
   -webkit-filter: grayscale(0.7);
 }

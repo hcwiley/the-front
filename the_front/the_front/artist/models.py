@@ -12,7 +12,12 @@ class Artist(models.Model):
   bio = models.TextField(blank=True, null=True, default="")
   artist_statement = models.TextField(blank=True, null=True, default="")
   user = models.ForeignKey(User)
+  website = models.CharField(max_length=100, blank=False, null=False, default="")
+  email = models.CharField(max_length=100, blank=False, null=False, default="")
 
+  class Meta:
+    ordering = ['name']
+  
   def __unicode__(self):
     return self.name
 
@@ -35,4 +40,7 @@ class Artist(models.Model):
 
 class ArtistMedia(FrontMedia):
   artist = models.ForeignKey(Artist)
+  dimensions = models.CharField(max_length=100, blank=False, null=False, default="")
+  medium = models.CharField(max_length=100, blank=False, null=False, default="")
+  year = models.CharField(max_length=4, blank=False, null=False, default="")
 
