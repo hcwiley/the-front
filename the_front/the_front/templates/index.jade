@@ -27,9 +27,9 @@ block content
         a(href='#{article.get_absolute_url()}')
           h4 #{article.name|lower}
           {% if forloop.first %}
-          p #{article.text|truncatewords:30}
+          p #{article.artists_info|truncatewords:30}
           {% else %}
-          p #{article.text|truncatewords:10}
+          p #{article.artists_info|truncatewords:10}
           {% endif %}
           .col-xs-3.pull-right
             img.img-thumbnail(src="#{article.thumb()}")

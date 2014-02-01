@@ -3,7 +3,9 @@ extends layout
 block content
   .col-sm-12
     h1 #{news.name} (#{news.date})
-    p=news.text
+    {% autoescape off %}
+    #{news.text}
+    {% endautoescape %}
   .row
     br
   .col-sm-10.col-sm-offset-1

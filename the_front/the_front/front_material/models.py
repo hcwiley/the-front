@@ -74,8 +74,9 @@ class FrontMedia(models.Model):
     super(FrontMedia, self).save()
 
 class NewsArticle(models.Model):
-  name = models.CharField(max_length=100, blank=False, null=False, default="")
+  name = models.CharField(max_length=255, blank=False, null=False, default="")
   text = models.TextField(blank=True, null=True, default="")
+  artists_info = models.TextField(blank=True, null=True, default="")
   date = models.DateField(default=datetime.date.today)
   is_archived = models.BooleanField(default=False)
 
