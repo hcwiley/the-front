@@ -1,9 +1,14 @@
 from pyquery import PyQuery
-import urllib
+import urllib, cStringIO
 from front_material.models import *
 from datetime import datetime
+from django.core.files.images import ImageFile
+from django.conf import settings
+import Image
+import ImageFile as IFile
+IFile.MAXBLOCK = 2**20
 
-def doTheDamnThing():
+def main():
   base = "http://www.nolafront.org/pages/"
   
   req = urllib.urlopen('%sarchive.htm' % base)
@@ -24,21 +29,34 @@ def doTheDamnThing():
     artists_info = a.parent().text()
     artists_info = artists_info[len(name)+1:]
     print href
-    nq = PyQuery(href)
+    nq = PyQuery(urllib.urlopen(href).read())
     imgs = nq.find('img')
     n_iter = imgs.items()
     img = n_iter.next()
     text = ""
     i = 0
+    news, created = NewsArticle.objects.get_or_create(name=name)
+    news.save()
     while i < len(imgs) - 1:
       i += 1
+      img_orig = n_iter.next()
+      src = "%s%s" % (base, img_orig.attr('src'))
+      img_name = "%s-%d.jpg" % (name, i)
+      if  NewsMedia.objects.filter(news_article=news,name=img_name).count > 0:
+        continue
       try:
-        img = n_iter.next()
-        src = img.attr('src')
-        img.attr('src', "%s%s" % (base, src))
+        img = cStringIO.StringIO(urllib.urlopen(src).read())
+        img = Image.open(img)
+        img_path = "%s/front_media/%s" % (settings.MEDIA_ROOT, img_name)
+        portrait = float(img.size[0] / img.size[1]) < 1.0
+        img.save(img_path, "JPEG", quality=90, optimize=True)
+        img = ImageFile(open(img_path))
+        media, created = NewsMedia.objects.get_or_create(news_article=news, full_res_image=img, portrait=portrait, name=img_name)
+        img_orig.attr('src', "%s%s" % (settings.MEDIA_URL, media.full_res_image.name))
+        img.close()
       except:
-        break
-    kids = nq.find('div#Content').children()
+        print "error on saving: %s" % src
+    kids = nq.find('div#Content').children("*")
     n_iter = kids.items()
     n_iter.next()
     n_iter.next()
@@ -50,7 +68,6 @@ def doTheDamnThing():
         text += n_iter.next().html()
       except:
         break
-    news, created = NewsArticle.objects.get_or_create(name=name)
     #if created:
       #print 'its news! haha get it!!'
     #else:
@@ -60,14 +77,28 @@ def doTheDamnThing():
     news.name = name
     news.text = text
     date = name.split('-')
+    date = date[0]
+    if date.endswith(" "):
+      date = date.rstrip(" ")
     try:
-      date = datetime.strptime(date[1], "%B %d, %Y")
-      last_year = date.year
+      date.index(',') 
     except:
       try:
-        date = "%s, %s" % (date[1], last_year)
-        date = datetime.strptime(date, "%B %d, %Y")
+        date = "%s, %s" % (date, name.split(", ")[1])
       except:
+        pass
+    try:
+      date = datetime.strptime(date, "%B %d, %Y")
+      last_year = "%d" % date.year
+    except:
+      print 'didnt get a date 1'
+      print date
+      try:
+        date = "%s, %s" % (date, last_year)
+        date = datetime.strptime(date, "%B %d, %Y")
+        last_year = "%d" % date.year
+      except:
+        print 'didnt get a date 2'
         date = datetime.strptime(last_year, "%Y")
     news.date = date
     news.save()

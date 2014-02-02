@@ -7,6 +7,6 @@ block content
     {% for article in news %}
     .col-sm-2
         a(href='#{article.get_absolute_url()}')
-          p #{article}
+          p #{article.name}
           img.img-thumbnail(src="#{article.thumb()}")
     {% endfor %}

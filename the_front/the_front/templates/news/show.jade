@@ -2,7 +2,7 @@ extends layout
 
 block content
   .col-sm-12
-    h1 #{news.name} (#{news.date})
+    h1 #{news.name}
     {% autoescape off %}
     #{news.text}
     {% endautoescape %}

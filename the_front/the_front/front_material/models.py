@@ -37,7 +37,7 @@ class FrontMedia(models.Model):
   def thumb(self):
     return "%s%s" % (settings.MEDIA_URL, self.thumbnail.name)
 
-  def save(self):
+  def save(self, *args, **kwargs):
     super(FrontMedia, self).save()
     self.saveImage()
     self.saveThumbnail()
@@ -51,7 +51,6 @@ class FrontMedia(models.Model):
       image = image.rotate(-90)
     dot = path.rindex('.')
     path = (path[:dot], path[dot:])
-    print path
     path = "%s-small%s" % (path[0], path[1])
     image.save(path)
     path = path.split(settings.MEDIA_ROOT)
