@@ -42,7 +42,7 @@ def main():
       img_orig = n_iter.next()
       src = "%s%s" % (base, img_orig.attr('src'))
       img_name = "%s-%d.jpg" % (name, i)
-      if  NewsMedia.objects.filter(news_article=news,name=img_name).count > 0:
+      if  len(NewsMedia.objects.filter(news_article=news,name=img_name)) > 0:
         continue
       try:
         img = cStringIO.StringIO(urllib.urlopen(src).read())
