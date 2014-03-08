@@ -12,11 +12,9 @@ block content
         .info
 
   .row
-    .col-sm-10.col-sm-offset-1
+    .col-sm-10.col-sm-offset-1.text-center
       h1 #{artist.name}
-      h4 collection of work
-  .row
-    br
+      hr
   .row
     {% if artist_videos.length > 0 %}
     .col-sm-8.col-sm-offset-2
@@ -38,10 +36,10 @@ block content
         {% endautoescape %}
       {% endfor %}
     {% endif %}
-    {% if artist_videos.length > 0 and artist_images.length > 0 %}
+    {% if artist_videos and artist_images %}
     .col-sm-8.col-sm-offset-2
       br
-      hr.dotted
+      hr
       br
     {% endif %}
     .col-sm-8.col-sm-offset-2

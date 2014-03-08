@@ -162,7 +162,7 @@ header.navbar .navbar-collapse {
 }
 footer {
   background: #bbb;
-  height: 75px;
+  height: 85px;
   width: 100% !important;
   margin: 0px !important;
   padding: 0px !important;
@@ -170,12 +170,13 @@ footer {
 footer li.brand {
   font-weight: 100;
   color: #fff;
-  margin-right: 20px;
+  margin-left: 0px;
+  margin-right: 0px;
   padding: 5px 0px;
   margin-top: -1px !important;
 }
 footer li.brand a {
-  padding: 6px 0px 7px 0px !important;
+  padding: 6px 10px 7px 10px !important;
 }
 footer .row {
   width: 405px;
@@ -190,6 +191,8 @@ footer .row:last-child {
 footer .row:last-child p {
   color: #fff;
   font-size: 12px;
+  font-weight: 100;
+  letter-spacing: 1px;
 }
 .artist-name-image {
   height: 50px;
