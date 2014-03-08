@@ -1,5 +1,6 @@
 $blue = #343496;
 $darkGray = #444;
+$accent = #699;
 
 shadow(args...)
    -webkit-box-shadow args
@@ -31,6 +32,12 @@ h1,h2,h3,h4,h5,h6
 
 p
   font-size 11pt
+
+.italic
+  font-style italic
+.short
+  line-height 8px
+  height 8px
 a
   color #445
 a:hover
@@ -41,7 +48,7 @@ a:hover
   background-color #fff
   shadow 0px 0px 35px rgba(0,0,0,0.3)
 hr
-  border-color #699
+  border-color $accent
 hr.dashed
   border-style dashed
 
@@ -89,7 +96,7 @@ header.navbar
     .navbar-header
       margin-left 160px
     .navbar-toggle
-      background #699
+      background $accent
       margin-top -7px
     span.icon-bar
       background #fff
@@ -126,7 +133,7 @@ header.navbar
     padding 20px 0px
     margin-top -14px
   a:hover
-    background #699!important
+    background $accent!important
     color #fff
 
 #content
@@ -172,7 +179,7 @@ footer
     vertical-align middle
     z-index 2
     color #fff
-    text-shadow 0px 1px 3px #699
+    text-shadow 0px 1px 3px $accent
     font-weight 400
   img
     width 100%
@@ -184,10 +191,55 @@ footer
     -webkit-filter grayscale(.7)
 .artist-name-image:hover
   p
-    color #699
+    color $accent
   img
     filter none
     -webkit-filter grayscale(0)
 
 .img-thumbnail
   border none
+  background none!important
+  width 100%
+  max-width 300px
+  border-radius 0px!important
+  padding 0px
+  margin 0px
+.lg-thumbnail
+  max-width 100%
+
+.artist-block
+  height 250px
+  overflow hidden
+  margin-bottom 20px
+.artist-block.lg
+  max-height 300px
+  height auto
+
+.video-block
+  iframe
+    width 100%
+
+#enlarged
+  .modal-header
+    border-bottom-color #999
+    padding 10px 30px
+    margin 0px 20px
+  .modal-content
+    border-radius 4px!important
+    border none!important
+    height 98%
+    width 98%
+    margin 1% auto
+    float none
+  .modal-body
+    height 90%
+    .img
+      height 80%
+      width 100%
+      background-position center
+      background-size contain 
+      background-repeat no-repeat
+    .info
+      border-top #999 1px solid
+      margin-top 20px
+      padding 20px 30px

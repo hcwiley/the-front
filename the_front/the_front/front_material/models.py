@@ -37,13 +37,25 @@ class FrontMedia(models.Model):
   def thumb(self):
     return "%s%s" % (settings.MEDIA_URL, self.thumbnail.name)
 
+  def img(self):
+    return "%s%s" % (settings.MEDIA_URL, self.image.name)
+
+  def full_res(self):
+    return "%s%s" % (settings.MEDIA_URL, self.full_res_image.name)
+
+  def video(self):
+    html = ""
+    if self.video_link.count("vimeo") > 0:
+      html = '<iframe src="//player.vimeo.com/video/%s" width="600" height="300px" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>' % (self.video_link[self.video_link.rindex("/") + 1 :])
+    return html
+
   def save(self, *args, **kwargs):
     super(FrontMedia, self).save()
     self.saveImage()
     self.saveThumbnail()
 
   def saveImage(self):
-    import Image
+    from PIL import Image
     path = self.full_res_image.path
     image = Image.open(path)
     image.thumbnail((900,900), Image.ANTIALIAS)
@@ -58,7 +70,7 @@ class FrontMedia(models.Model):
     super(FrontMedia, self).save()
 
   def saveThumbnail(self):
-    import Image
+    from PIL import Image
     path = self.full_res_image.path
     image = Image.open(path)
     image.thumbnail((250,250), Image.ANTIALIAS)

@@ -19,7 +19,8 @@ def artist(req, slug):
     return render_to_response("error.jade", args)
   artist = artist[0]
   args['artist'] = artist
-  args['artist_images'] = ArtistMedia.objects.filter(artist=artist)
+  args['artist_images'] = ArtistMedia.objects.filter(artist=artist).filter(video_link="")
+  args['artist_videos'] = ArtistMedia.objects.filter(artist=artist).exclude(video_link="")
   print args['artist_images']
   return render_to_response("artist/show.jade", args)
 

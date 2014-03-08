@@ -1,14 +1,66 @@
 extends layout
 
 block content
-  .col-sm-12
-    h1 #{artist.name}
-    h4 collection of work
+  #enlarged.modal.fade.modal-lg
+    .modal-content
+      .modal-header
+        button.pull-right.close(type='button', data-dismiss='modal')
+          span.glyphicon.glyphicon-remove
+        h4.name
+      .modal-body
+        .img
+        .info
+
+  .row
+    .col-sm-10.col-sm-offset-1
+      h1 #{artist.name}
+      h4 collection of work
   .row
     br
-  .col-sm-10.col-sm-offset-1
-    {% for image in artist_images %}
-    .col-sm-4
-      p #{image.name}
-      img(src="#{image.thumb()}")
-    {% endfor %}
+  .row
+    {% if artist_videos.length > 0 %}
+    .col-sm-8.col-sm-offset-2
+      {% for image in artist_videos %}
+      .col-sm-3
+        .row
+          br
+          br
+        .row.text-center
+          h4.italic #{image.name}
+          br
+        .row.info
+          p.short.small #{image.dimensions}
+          p.short.small #{image.medium}
+          p.short.small #{image.year}
+      .col-sm-9.video-block
+        {% autoescape off %}
+        #{image.video}
+        {% endautoescape %}
+      {% endfor %}
+    {% endif %}
+    {% if artist_videos.length > 0 and artist_images.length > 0 %}
+    .col-sm-8.col-sm-offset-2
+      br
+      hr.dotted
+      br
+    {% endif %}
+    .col-sm-8.col-sm-offset-2
+      {% for image in artist_images %}
+      .row
+        .col-sm-3
+          .row
+            br
+            br
+          .row.text-center
+            h4.italic #{image.name}
+          .row.info
+            br
+            p.short.small #{image.dimensions}
+            p.short.small #{image.medium}
+            p.short.small #{image.year}
+        .col-sm-9
+          img.enlarge.img-thumbnail.lg-thumbnail(src="#{image.img()}", data-dimensions="#{image.dimensions}", data-medium="#{image.medium}", data-year="#{image.year}", data-name='#{image.name}', data-full='#{image.full_res()}')
+      .row
+        br
+        br
+      {% endfor %}

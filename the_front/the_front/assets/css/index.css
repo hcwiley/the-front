@@ -18,6 +18,13 @@ h6 {
 p {
   font-size: 11pt;
 }
+.italic {
+  font-style: italic;
+}
+.short {
+  line-height: 8px;
+  height: 8px;
+}
 a {
   color: #445;
 }
@@ -219,4 +226,53 @@ footer .row:last-child p {
 }
 .img-thumbnail {
   border: none;
+  background: none !important;
+  width: 100%;
+  max-width: 300px;
+  border-radius: 0px !important;
+  padding: 0px;
+  margin: 0px;
+}
+.lg-thumbnail {
+  max-width: 100%;
+}
+.artist-block {
+  height: 250px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+.artist-block.lg {
+  max-height: 300px;
+  height: auto;
+}
+.video-block iframe {
+  width: 100%;
+}
+#enlarged .modal-header {
+  border-bottom-color: #999;
+  padding: 10px 30px;
+  margin: 0px 20px;
+}
+#enlarged .modal-content {
+  border-radius: 4px !important;
+  border: none !important;
+  height: 98%;
+  width: 98%;
+  margin: 1% auto;
+  float: none;
+}
+#enlarged .modal-body {
+  height: 90%;
+}
+#enlarged .modal-body .img {
+  height: 80%;
+  width: 100%;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+#enlarged .modal-body .info {
+  border-top: #999 1px solid;
+  margin-top: 20px;
+  padding: 20px 30px;
 }
