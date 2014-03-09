@@ -29,9 +29,9 @@ html(lang="en")
             li.brand
               a(href='/about') about
             li.brand
-              a(href='/archive') archive
-            li.brand
               a(href='/press') press
+            li.brand
+              a(href='/links') links
             li.brand
               a(href='/contact') contact
     #content.container
@@ -43,14 +43,20 @@ html(lang="en")
         li.brand
           a(href='/artists') artists
         li.brand
-          a(href='/news') news
+          a(href='/shows') shows
         li.brand
           a(href='/about') about
         li.brand
-          a(href='/archive') archive
-        li.brand
           a(href='/press') press
         li.brand
+          a(href='/links') links
+        li.brand
           a(href='/contact') contact
-      .row
+      .row.info
         p The Front • 4100 St. Claude Avenue • New Orleans, LA 70117 • Saturday & Sunday 12 to 5 pm
+      .row
+        .social
+          a(href='https://twitter.com/TheFrontNOLA')
+            img(src='#{STATIC_URL}img/twitter-black.png', width='32px', height='32px')
+          a.pull-right(href='http://www.facebook.com/pages/The-Front/103934003034459')
+            img(src='#{STATIC_URL}img/facebook-black.png', width='32px', height='32px')
