@@ -5,7 +5,6 @@ class ArtistMediaInline(admin.TabularInline):
   model = ArtistMedia
 
 def generate_thumbnails(modeladmin, request, queryset):
-  print queryset
   for obj in queryset:
     obj.saveThumbnail()
     obj.saveImage()

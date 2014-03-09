@@ -14,6 +14,7 @@ class Artist(models.Model):
   user = models.ForeignKey(User)
   website = models.CharField(max_length=100, blank=True, null=True, default="")
   email = models.CharField(max_length=100, blank=True, null=True, default="")
+  cv = models.FileField(upload_to='front_media/', blank=True, null=True, default="")
 
   class Meta:
     ordering = ['name']
@@ -25,6 +26,15 @@ class Artist(models.Model):
     super(Artist, self).save()
     self.slug = slugify(self.name)
     super(Artist, self).save()
+
+  def cv_link(self):
+    return "%s%s" % (settings.MEDIA_URL, self.cv.name)
+
+  def cv_name(self):
+    if self.cv:
+      return "%s-CV%s" % (self.name, self.cv.name[self.cv.name.rindex("."):])
+    else:
+      return ""
 
   def web(self):
     if self.website.count("http") > 0:

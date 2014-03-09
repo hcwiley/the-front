@@ -43,6 +43,13 @@ class FrontMedia(models.Model):
   def full_res(self):
     return "%s%s" % (settings.MEDIA_URL, self.full_res_image.name)
 
+  def height(self):
+    try:
+      return self.image.height
+    except:
+      return ""
+
+
   def video(self):
     html = ""
     if self.video_link.count("vimeo") > 0:
@@ -72,7 +79,7 @@ class FrontMedia(models.Model):
     path = "%s-small%s" % (path[0], path[1])
     image.save(path)
     path = path.split(settings.MEDIA_ROOT)
-    self.image = "%s" % (path[1])
+    self.image = "./%s" % (path[1])
     super(FrontMedia, self).save()
 
   def saveThumbnail(self):

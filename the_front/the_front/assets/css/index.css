@@ -198,8 +198,12 @@ footer .row {
   padding-top: 10px;
 }
 footer .social {
-  width: 96px;
+  width: 60px;
   margin: 0px auto;
+}
+footer .social img {
+  width: 20px;
+  height: 20px;
 }
 footer .row.info {
   width: 100%;
@@ -268,18 +272,34 @@ footer .row.info p {
   max-height: 300px;
   height: auto;
 }
+.artist-title h2 {
+  margin-bottom: 10px;
+}
+.artist-title div h4 {
+  margin-bottom: 15px;
+}
 .video-block iframe {
   width: 100%;
+}
+.invisible {
+  visibility: hidden;
+}
+div.enlarge {
+  min-height: 200px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top center;
 }
 #enlarged .modal-header {
   border-bottom-color: #999;
   padding: 10px 30px;
   margin: 0px 20px;
+  height: 40px;
 }
 #enlarged .modal-content {
   border-radius: 4px !important;
   border: none !important;
-  height: 98%;
+  height: 96%;
   width: 98%;
   margin: 1% auto;
   float: none;
@@ -288,7 +308,7 @@ footer .row.info p {
   height: 90%;
 }
 #enlarged .modal-body .img {
-  height: 80%;
+  height: 90%;
   width: 100%;
   background-position: center;
   background-size: contain;
@@ -296,6 +316,6 @@ footer .row.info p {
 }
 #enlarged .modal-body .info {
   border-top: #999 1px solid;
-  margin-top: 20px;
-  padding: 20px 30px;
+  margin-top: 10px;
+  padding: 5px 30px;
 }
