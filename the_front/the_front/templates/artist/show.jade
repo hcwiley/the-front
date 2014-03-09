@@ -66,12 +66,17 @@ block content
           {% autoescape off %}
           #{image.video}
           {% endautoescape %}
+        {% if not forloop.last %}
+        .row
+          .col-sm-8.col-sm-offset-2
+            br
+            hr.dashed.lightGray
+            br
+        {% endif %}
         {% endfor %}
-      .row
-        br
     {% endif %}
     {% if artist_videos and artist_images %}
-    .col-sm-8.col-sm-offset-2
+    .col-sm-10.col-sm-offset-1
       br
       hr.dashed
       br
@@ -92,6 +97,11 @@ block content
         .col-sm-8.col-sm-offset-1.enlarge(style="background-image: url('#{image.img()}');", data-dimensions="#{image.dimensions}", data-medium="#{image.medium}", data-year="#{image.year}", data-name='#{image.name}', data-full='#{image.full_res()}')
           img.invisible.img-thumbnail.lg-thumbnail(src="#{image.img()}", data-dimensions="#{image.dimensions}", data-medium="#{image.medium}", data-year="#{image.year}", data-name='#{image.name}', data-full='#{image.full_res()}')
 
+      {% if not forloop.last %}
       .row
-        br
+        .col-sm-8.col-sm-offset-2
+          br
+          hr.dashed.lightGray
+          br
+      {% endif %}
       {% endfor %}
