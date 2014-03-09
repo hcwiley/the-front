@@ -1,41 +1,45 @@
 extends layout
 
 block content
-  .col-xs-12.visible-xs
-    br
-    br
-  .col-sm-12.text-center
-    h1 the front
-    h5 [an artist collective]
   .row
-    br
-  .col-sm-3
-    h3 artists
-    //-hr.dashed
-    {% for artist in artists %}
-    a(href='#{artist.get_absolute_url()}')
-      .col-sm-12.artist-name-image.col-xs-4
-        p #{artist.name|lower}
-        img(src="#{artist.thumb()}")
-    {% endfor %}
-  .col-sm-6.col-sm-offset-1.text-right
-    h3.text-right news
-    //-hr.dashed
-    {% for article in news %}
-    .row
-      .col-xs-12
-        a(href='#{article.get_absolute_url()}')
-          h4 #{article.name|lower}
-          {% if forloop.first %}
-          p #{article.artists_info|truncatewords:30}
-          {% else %}
-          p #{article.artists_info|truncatewords:10}
-          {% endif %}
-          .col-xs-3.pull-right
-            img.img-thumbnail(src="#{article.thumb()}")
-    {% if not forloop.last %}
-    .row
-      .col-sm-12
-        hr.dashed
-    {% endif %}
-    {% endfor %}
+    .col-xs-12.visible-xs
+      br
+      br
+  .row
+    .col-sm-12.text-center
+      h1 the front
+      h5 [an artist collective]
+  .row
+    .col-sm-12.text-center
+      br
+  .row
+    .col-sm-10.col-sm-offset-1
+      .col-sm-4
+        h3 artists
+        //-hr.dashed
+        {% for artist in artists %}
+        a(href='#{artist.get_absolute_url()}')
+          .col-sm-12.artist-name-image.col-xs-4(style="background-image: url('#{artist.thumb()}')")
+            p #{artist.name|lower}
+        {% endfor %}
+      .col-sm-6.col-sm-offset-2.text-right
+        h3.text-right news
+        //-hr.dashed
+        {% for article in news %}
+        .row
+          .col-xs-12
+            a(href='#{article.get_absolute_url()}')
+              h4 #{article.name|lower}
+              {% if forloop.first %}
+              p #{article.artists_info|truncatewords:30}
+              {% else %}
+              p #{article.artists_info|truncatewords:10}
+              {% endif %}
+              .col-xs-3.pull-right
+                img.img-thumbnail(src="#{article.thumb()}")
+        {% if not forloop.last %}
+        .row
+          .col-sm-12
+            hr.dashed
+        {% endif %}
+        {% endfor %}

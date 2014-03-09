@@ -212,35 +212,37 @@ footer .row:last-child p {
 .artist-name-image {
   height: 50px;
   overflow: hidden;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  padding: 0px;
+  transition: 0.5s all;
 }
 .artist-name-image * {
   position: absolute;
 }
 .artist-name-image p {
+  padding: 0px;
+  margin: 0px;
   text-align: center;
   width: 100%;
   line-height: 50px;
   vertical-align: middle;
   z-index: 2;
   color: #fff;
-  text-shadow: 0px 1px 3px #699;
-  font-weight: 400;
+  text-shadow: 0px 0px 4px #222;
+  background: rgba(0,0,0,0.2);
+  font-weight: 900;
+  font-variant: small-caps;
+  letter-spacing: 1.5px;
+  transition: 0.5s all;
 }
-.artist-name-image img {
-  width: 100%;
-  height: auto;
-  top: 0;
-  bottom: 0;
-  margin: auto;
-  filter: #808080;
-  -webkit-filter: grayscale(0.7);
+.artist-name-image:hover {
+  height: 150px;
 }
 .artist-name-image:hover p {
-  color: #699;
-}
-.artist-name-image:hover img {
-  filter: none;
-  -webkit-filter: grayscale(0);
+  line-height: 150px;
+  background: rgba(0,0,0,0);
 }
 .img-thumbnail {
   border: none;
