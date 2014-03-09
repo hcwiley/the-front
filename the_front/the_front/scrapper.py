@@ -4,8 +4,8 @@ from front_material.models import *
 from datetime import datetime
 from django.core.files.images import ImageFile
 from django.conf import settings
-import Image
-import ImageFile as IFile
+from PIL import Image
+from PIL import ImageFile as IFile
 IFile.MAXBLOCK = 2**20
 
 def main():

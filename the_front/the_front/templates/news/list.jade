@@ -1,12 +1,17 @@
 extends layout
 
 block content
-  .col-sm-10
-    h1.pull-right news
-  .col-sm-12
-    {% for article in news %}
-    .col-sm-2
-        a(href='#{article.get_absolute_url()}')
-          p #{article.name}
-          img.img-thumbnail(src="#{article.thumb()}")
-    {% endfor %}
+  .row
+    .col-sm-10
+      h1.pull-right news
+  .row
+    .col-sm-12
+      br
+  .row
+    .col-sm-10.col-sm-offset-1
+      {% for article in news %}
+      .col-sm-2.artist-block
+          a(href='#{article.get_absolute_url()}')
+            p #{article.name}
+            img.img-thumbnail(src="#{article.thumb()}")
+      {% endfor %}
