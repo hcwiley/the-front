@@ -1,6 +1,15 @@
 extends layout
 
 block content
+  #enlarged.modal.fade.modal-lg(tabindex="-1",role="dialog", data-keyboard='true')
+    .modal-content
+      .modal-header
+        button.pull-right.close(type='button', data-dismiss='modal',aria-hidden="true")
+          span.glyphicon.glyphicon-remove
+        h4.name
+      .modal-body
+        .img
+
   .row
     .col-sm-10.col-sm-offset-1
       h1 #{news.name}
@@ -13,6 +22,7 @@ block content
   .row
     .col-sm-10.col-sm-offset-1
       {% for image in news_images %}
-      .col-sm-4
-        img(src="#{image.thumb()}", title="#{image.name}")
+      .col-sm-4.artist-block
+        a(href='#')
+          img.enlarge.img-thumbnail(src="#{image.thumb()}", title="#{image.name}", data-name='#{image.name}', data-full='#{image.full_res()}')
       {% endfor %}

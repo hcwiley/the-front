@@ -14,7 +14,7 @@ urlpatterns = patterns('',
      url(r'^about$', 'the_front.views.about', name='about'),
 
      url(r'^artists', include('artist.urls')),
-     url(r'^news', include('front_material.news.urls')),
+     url(r'^shows', include('front_material.news.urls')),
      url(r'^archive', 'front_material.news.views.archive'),
      url(r'^press', include('front_material.press.urls')),
 

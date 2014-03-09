@@ -113,7 +113,7 @@ class NewsArticle(models.Model):
     return image.thumb()
 
   def get_absolute_url(self):
-    return "/news/%s-%s" % (self.date, self.pk)
+    return "/shows/%s-%s" % (self.date, self.pk)
 
 class NewsMedia(FrontMedia):
   news_article = models.ForeignKey(NewsArticle)

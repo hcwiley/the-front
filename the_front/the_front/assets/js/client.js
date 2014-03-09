@@ -5,7 +5,7 @@ function bindEnlarge(){
     modal.find(".img").css("background-image","url('"+$(this).data("full")+"')");
     var info = $(this).parents('.row').find('.info').html();
     modal.find('.info').html(info);
-    modal.modal("show");
+    modal.modal("toggle");
   });
 }
 
