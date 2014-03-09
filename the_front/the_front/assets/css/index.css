@@ -51,6 +51,17 @@ hr {
 hr.dashed {
   border-style: dashed;
 }
+.accent {
+  color: #699;
+}
+@media screen and (max-width: 768px) {
+  .sm-text-center {
+    text-align: center;
+  }
+  .sm-text-center * {
+    text-align: center;
+  }
+}
 html,
 body {
   width: 100%;
@@ -161,7 +172,7 @@ header.navbar .navbar-collapse {
   color: #fff;
 }
 #content {
-  margin: 60px auto;
+  margin: 80px auto;
   min-height: 65%;
 }
 footer {

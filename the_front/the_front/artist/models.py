@@ -12,8 +12,8 @@ class Artist(models.Model):
   bio = models.TextField(blank=True, null=True, default="")
   artist_statement = models.TextField(blank=True, null=True, default="")
   user = models.ForeignKey(User)
-  website = models.CharField(max_length=100, blank=False, null=False, default="")
-  email = models.CharField(max_length=100, blank=False, null=False, default="")
+  website = models.CharField(max_length=100, blank=True, null=True, default="")
+  email = models.CharField(max_length=100, blank=True, null=True, default="")
 
   class Meta:
     ordering = ['name']
@@ -25,6 +25,12 @@ class Artist(models.Model):
     super(Artist, self).save()
     self.slug = slugify(self.name)
     super(Artist, self).save()
+
+  def web(self):
+    if self.website.count("http") > 0:
+      return self.website
+    else:
+      return "http://%s" % self.website
 
   def thumb(self):
     image = self.artistmedia_set.filter(is_default_image=True)

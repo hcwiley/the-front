@@ -12,31 +12,60 @@ block content
         .info
 
   .row
-    .col-sm-10.col-sm-offset-1.text-center
-      h1 #{artist.name}
+    .col-sm-10.col-sm-offset-1
+      .row.sm-text-center
+        .col-sm-5
+          h1 #{artist.name}
+        .col-sm-4
+          br
+          a(href='mailto:#{artist.email}', target="_blank")
+            h4.accent #{artist.email}
+          a(href='#{artist.web()}', target="_blank")
+            h4.accent #{artist.website}
+        .col-sm-3.text-right
+          br
+          {% if artist.bio %}
+          a(href='#', data-toggle='collapse', data-target="#bio")
+            h4 bio
+          {% endif %}
+          {% if artist.artist_statement %}
+          a(href='#', data-toggle='collapse', data-target="#statement")
+            h4 artist statement
+          {% endif %}
+      .row
+        #bio.col-sm-10.col-sm-offset-1.collapse
+          h3 bio
+          p=artist.bio
+        #statement.col-sm-10.col-sm-offset-1.collapse
+          h3 artist statement
+          p=artist.artist_statement
       hr
   .row
     {% if artist_videos.length > 0 %}
     .col-sm-10.col-sm-offset-1
       {% for image in artist_videos %}
-      .col-sm-3
-        .row.text-center
-          h4.italic #{image.name}
-          br
-        .row.info
-          p.short.small #{image.dimensions}
-          p.short.small #{image.medium}
-          p.short.small #{image.year}
-      .col-sm-9.video-block
-        {% autoescape off %}
-        #{image.video}
-        {% endautoescape %}
-      {% endfor %}
+      .row
+        .col-sm-3
+          .row.text-center
+            h4.italic #{image.name}
+            br
+          .row.info
+            .col-xs-offset-3
+              p.short.small #{image.dimensions}
+              p.short.small #{image.medium}
+              p.short.small #{image.year}
+        .col-sm-8.col-sm-offset-1.video-block
+          {% autoescape off %}
+          #{image.video}
+          {% endautoescape %}
+        {% endfor %}
+      .row
+        br
     {% endif %}
     {% if artist_videos and artist_images %}
     .col-sm-8.col-sm-offset-2
       br
-      hr
+      hr.dashed
       br
     {% endif %}
     .col-sm-10.col-sm-offset-1
@@ -52,9 +81,8 @@ block content
               p.short.small #{image.medium}
               p.short.small #{image.year}
         .col-sm-8.col-sm-offset-1
-          a(href='')
+          a(href='#')
             img.enlarge.img-thumbnail.lg-thumbnail(src="#{image.img()}", data-dimensions="#{image.dimensions}", data-medium="#{image.medium}", data-year="#{image.year}", data-name='#{image.name}', data-full='#{image.full_res()}')
       .row
-        br
         br
       {% endfor %}
