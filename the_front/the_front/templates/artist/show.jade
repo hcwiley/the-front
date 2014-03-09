@@ -4,7 +4,7 @@ block content
   #enlarged.modal.fade.modal-lg
     .modal-content
       .modal-header
-        button.pull-right.close(type='button', data-dismiss='modal')
+        button.pull-right.close(type='button', data-dismiss='modal',aria-hidden="true")
           span.glyphicon.glyphicon-remove
         h4.name
       .modal-body
@@ -17,7 +17,7 @@ block content
       hr
   .row
     {% if artist_videos.length > 0 %}
-    .col-sm-8.col-sm-offset-2
+    .col-sm-10.col-sm-offset-1
       {% for image in artist_videos %}
       .col-sm-3
         .row.text-center
@@ -39,7 +39,7 @@ block content
       hr
       br
     {% endif %}
-    .col-sm-8.col-sm-offset-2
+    .col-sm-10.col-sm-offset-1
       {% for image in artist_images %}
       .row
         .col-sm-3
@@ -47,11 +47,13 @@ block content
             h4.italic #{image.name}
           .row.info
             br
-            p.short.small #{image.dimensions}
-            p.short.small #{image.medium}
-            p.short.small #{image.year}
-        .col-sm-9
-          img.enlarge.img-thumbnail.lg-thumbnail(src="#{image.img()}", data-dimensions="#{image.dimensions}", data-medium="#{image.medium}", data-year="#{image.year}", data-name='#{image.name}', data-full='#{image.full_res()}')
+            .col-xs-offset-3
+              p.short.small #{image.dimensions}
+              p.short.small #{image.medium}
+              p.short.small #{image.year}
+        .col-sm-8.col-sm-offset-1
+          a(href='')
+            img.enlarge.img-thumbnail.lg-thumbnail(src="#{image.img()}", data-dimensions="#{image.dimensions}", data-medium="#{image.medium}", data-year="#{image.year}", data-name='#{image.name}', data-full='#{image.full_res()}')
       .row
         br
         br
