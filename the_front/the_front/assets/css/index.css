@@ -295,33 +295,37 @@ div.enlarge {
   background-position: top center;
 }
 #enlarged .modal-header {
-  border-bottom-color: #999;
+  border: none;
   padding: 10px 30px;
   margin: 0px 20px;
   height: 40px;
 }
 #enlarged .modal-content {
-  border-radius: 4px !important;
+  border-radius: 0px !important;
   border: none !important;
-  height: 96%;
-  width: 98%;
-  margin: 1% auto;
+  height: 100%;
+  width: 100%;
+  margin: 0px;
   float: none;
 }
 #enlarged .modal-body {
   height: 90%;
+  padding: 10px;
 }
 #enlarged .modal-body .img {
-  height: 90%;
+  height: 85%;
   width: 100%;
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
 }
 #enlarged .modal-body .info {
-  border-top: #999 1px solid;
-  margin-top: 10px;
-  padding: 5px 30px;
+  margin-top: 15px;
+  padding: 15px 10px;
+  min-height: 75px;
+}
+#enlarged .modal-body .info div {
+  margin: 0px 0px 0px 50px;
 }
 .support-button {
   background-image: url("../img/donate-button.png");

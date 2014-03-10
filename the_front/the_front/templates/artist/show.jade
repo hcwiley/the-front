@@ -48,24 +48,28 @@ block content
     .col-sm-12
       hr
   .row
-    {% if artist_videos.length > 0 %}
     .col-sm-10.col-sm-offset-1
-      {% for image in artist_videos %}
+      {% for media in artist_media %}
       .row
         .col-sm-3
           .row
             .col-sm-12
-              h4.italic #{image.name}
+              h4.italic #{media.name}
               br
           .row.info
             .col-xs-offset-3
-              p.short.small #{image.dimensions}
-              p.short.small #{image.medium}
-              p.short.small #{image.year}
+              p.short.small #{media.dimensions}
+              p.short.small #{media.medium}
+              p.short.small #{media.year}
+        {% if media.video_link %}
         .col-sm-8.col-sm-offset-1.video-block
           {% autoescape off %}
-          #{image.video}
+          #{media.video}
           {% endautoescape %}
+        {% else %}
+        .col-sm-8.col-sm-offset-1.enlarge(style="background-image: url('#{media.img()}');", data-dimensions="#{media.dimensions}", data-medium="#{media.medium}", data-year="#{media.year}", data-name='#{media.name}', data-full='#{media.full_res()}')
+          img.invisible.img-thumbnail.lg-thumbnail(src="#{media.img()}", data-dimensions="#{media.dimensions}", data-medium="#{media.medium}", data-year="#{media.year}", data-name='#{media.name}', data-full='#{media.full_res()}')
+        {% endif %}
         {% if not forloop.last %}
         .row
           .col-sm-8.col-sm-offset-2
@@ -73,35 +77,4 @@ block content
             hr.dashed.lightGray
             br
         {% endif %}
-        {% endfor %}
-    {% endif %}
-    {% if artist_videos and artist_images %}
-    .col-sm-10.col-sm-offset-1
-      br
-      hr.dashed
-      br
-    {% endif %}
-    .col-sm-10.col-sm-offset-1
-      {% for image in artist_images %}
-      .row
-        .col-sm-3
-          .row
-            .col-sm-12
-              h4.italic #{image.name}
-              br
-          .row.info
-            .col-xs-offset-3
-              p.short.small #{image.dimensions}
-              p.short.small #{image.medium}
-              p.short.small #{image.year}
-        .col-sm-8.col-sm-offset-1.enlarge(style="background-image: url('#{image.img()}');", data-dimensions="#{image.dimensions}", data-medium="#{image.medium}", data-year="#{image.year}", data-name='#{image.name}', data-full='#{image.full_res()}')
-          img.invisible.img-thumbnail.lg-thumbnail(src="#{image.img()}", data-dimensions="#{image.dimensions}", data-medium="#{image.medium}", data-year="#{image.year}", data-name='#{image.name}', data-full='#{image.full_res()}')
-
-      {% if not forloop.last %}
-      .row
-        .col-sm-8.col-sm-offset-2
-          br
-          hr.dashed.lightGray
-          br
-      {% endif %}
       {% endfor %}

@@ -83,7 +83,8 @@ class FrontMedia(models.Model):
     path = "%s-small%s" % (path[0], path[1])
     image.save(path)
     path = path.split(settings.MEDIA_ROOT)
-    self.image = "./%s" % (path[1])
+    path = path[1].strip("/")
+    self.image = "%s" % (path)
     super(FrontMedia, self).save()
 
   def saveThumbnail(self):
@@ -98,7 +99,8 @@ class FrontMedia(models.Model):
     path = "%s-thumb%s" % (path[0], path[1])
     image.save(path)
     path = path.split(settings.MEDIA_ROOT)
-    self.thumbnail = "%s" % (path[1])
+    path = path[1].strip("/")
+    self.thumbnail = "%s" % (path)
     super(FrontMedia, self).save()
 
 class NewsArticle(models.Model):
