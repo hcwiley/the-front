@@ -20,7 +20,23 @@ block content
   .row
     .col-sm-10.col-sm-offset-1
       {% for link in links %}
-      .col-sm-4
+      {% if forloop.counter0|divisibleby:"3" %}
+      .row.hidden-xs
+        .col-sm-12
+          br
+      {% endif %}
+      .col-sm-4.link-div.text-center
         a(href='#{link.url}', target='_blank')
           h4 #{link.name}
+      {% if forloop.counter|divisibleby:"3" %}
+      {% if not forloop.last %}
+      .row.hidden-xs
+        .col-sm-12
+          br
+          br
+          br
+        .col-sm-12
+          hr.dashed.lightGray
+      {% endif %}
+      {% endif %}
       {% endfor %}

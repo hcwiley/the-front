@@ -341,3 +341,10 @@ div.enlarge {
 .support-button:hover {
   background-image: url("../img/donate-button-hover.png");
 }
+.link-div {
+  height: 60px;
+}
+.link-div h4 {
+  height: 60px;
+  vertical-align: middle;
+}
