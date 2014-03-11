@@ -18,7 +18,7 @@ block content
           h2 #{artist.name}
           {% if artist.cv %}
           a(href='#{artist.cv_link()}', target="_blank", download='#{artist.cv_name()}')
-            h4.accent cv &nbsp;
+            h4 cv &nbsp;
               span.glyphicon.glyphicon-cloud-download
           {% endif %}
         .col-sm-3
