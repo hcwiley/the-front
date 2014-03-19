@@ -57,9 +57,9 @@ class Artist(models.Model):
 class ArtistMedia(FrontMedia):
   artist = models.ForeignKey(Artist)
   position = models.PositiveSmallIntegerField("Position", default=1)
-  dimensions = models.CharField(max_length=100, blank=False, null=False, default="")
-  medium = models.CharField(max_length=100, blank=False, null=False, default="")
-  year = models.CharField(max_length=4, blank=False, null=False, default="")
+  dimensions = models.CharField(max_length=100, blank=True, null=True, default="")
+  medium = models.CharField(max_length=100, blank=True, null=True, default="")
+  year = models.CharField(max_length=4, blank=True, null=True, default="")
   class Meta:
     ordering = ('position', )
 
