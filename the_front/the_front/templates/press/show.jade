@@ -14,7 +14,7 @@ block content
       h4 links
       {% for link in press.presslink_set.all %}
       li
-        a(href="#{link.name}", target='_blank') #{link.url}
+        a(href="#{link.url}", target='_blank') #{link.url}
       {% endfor %}
     .col-sm-4.pull-right
       {% for image in press_images %}
