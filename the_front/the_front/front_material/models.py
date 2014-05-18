@@ -134,7 +134,7 @@ class NewsMedia(FrontMedia):
 
 class Press(models.Model):
   name = models.CharField(max_length=100, blank=False, null=False, default="")
-  text = models.TextField(blank=True, null=True, default="")
+  content = HTMLField()
   date = models.DateField(default=datetime.date.today)
   is_archived = models.BooleanField(default=False)
 
