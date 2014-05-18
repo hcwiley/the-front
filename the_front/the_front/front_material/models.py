@@ -107,7 +107,7 @@ class FrontMedia(models.Model):
 class NewsArticle(models.Model):
   name = models.CharField(max_length=255, blank=False, null=False, default="")
   text = models.TextField(blank=True, null=True, default="")
-  content = HTMLField()
+  content = HTMLField(blank=True, null=True, default='')
   date = models.DateField(default=datetime.date.today)
   is_old_news = models.BooleanField(default=False)
 
@@ -134,7 +134,7 @@ class NewsMedia(FrontMedia):
 
 class Press(models.Model):
   name = models.CharField(max_length=100, blank=False, null=False, default="")
-  content = HTMLField()
+  content = HTMLField(blank=True, null=True, default='')
   date = models.DateField(default=datetime.date.today)
   is_archived = models.BooleanField(default=False)
 
