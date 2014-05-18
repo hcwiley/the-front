@@ -7,3 +7,4 @@ pyjade==1.5.2
 django-pipeline
 django-admin-bootstrapped
 dj-database-url
+django-tinymce

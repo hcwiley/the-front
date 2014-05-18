@@ -3,6 +3,7 @@ from django.conf import settings
 from django.utils.text import slugify
 from django.contrib.auth.models import User
 import datetime
+from tinymce.models import HTMLField
 
 class FrontInfo(models.Model):
   about = models.TextField(blank=True, null=True, default="")
@@ -106,9 +107,9 @@ class FrontMedia(models.Model):
 class NewsArticle(models.Model):
   name = models.CharField(max_length=255, blank=False, null=False, default="")
   text = models.TextField(blank=True, null=True, default="")
+  content = HTMLField()
   date = models.DateField(default=datetime.date.today)
   is_old_news = models.BooleanField(default=False)
-  old_news_path = models.CharField(max_length=255, blank=True, null=True, default="")
 
   class Meta:
     ordering = ['-date']

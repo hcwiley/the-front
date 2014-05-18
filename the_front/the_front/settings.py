@@ -176,11 +176,17 @@ INSTALLED_APPS = (
     'django.contrib.admindocs',
     'django_admin_bootstrapped',
     'django.contrib.webdesign',
+    'tinymce',
     'pipeline',
     'south',
     'artist',
     'front_material',
 )
+
+TINYMCE_DEFAULT_CONFIG = {
+    'theme': "advanced",
+    'cleanup_on_startup': True,
+}
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to

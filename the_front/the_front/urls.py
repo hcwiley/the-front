@@ -20,6 +20,7 @@ urlpatterns = patterns('',
 
      url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
      url(r'^admin/', include(admin.site.urls)),
+     (r'^tinymce/', include('tinymce.urls')),
 )
 if settings.IS_DEV:
     # let django serve user generated media while in development
