@@ -10,5 +10,6 @@ admin.autodiscover()
 urlpatterns = patterns('',
     # Examples:
      url(r'^$', 'front_material.news.views.home', name='home'),
+     url(r'^/archive images/(?P<path>.*)$', 'front_material.news.views.news_image'),
      url(r'^/[\d]+-[\d]+-[\d]+-(?P<pk>.*)$', 'front_material.news.views.news'),
 )

@@ -56,26 +56,25 @@ def main():
         img.close()
       except:
         print "error on saving: %s" % src
-    kids = nq.find('div#Content').children("*")
-    n_iter = kids.items()
-    n_iter.next()
-    n_iter.next()
-    text = ""
-    i = 0
-    while i < len(kids) - 1:
-      i += 1
-      try:
-        text += n_iter.next().html()
-      except:
-        break
-    #if created:
-      #print 'its news! haha get it!!'
-    #else:
-      #print 'OLD!!!!'
+    html = nq.find("body").html()
+    if href.find("archive-december 13") >= 0:
+      print html
+    is_content = False
+    lines = html.split("\n")
+    news.text = ""
+    for line in lines:
+      if line.find("LINKS") >= 0:
+        is_content = True
+        continue
+      if is_content:
+        if line.find("</body>") >= 0:
+          is_content = False
+          continue
+        news.text += line
     news.name = name
+    news.is_old_news = True
     news.artists_info = artists_info
     news.name = name
-    news.text = text
     date = name.split('-')
     date = date[0]
     if date.endswith(" "):

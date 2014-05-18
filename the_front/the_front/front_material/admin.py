@@ -3,6 +3,7 @@ from django.contrib import admin
 
 class NewsMediaInline(admin.TabularInline):
   model = NewsMedia
+  #exclude = ['is_old_news']
 
 class NewsArticleAdmin(admin.ModelAdmin):
   inlines = [
