@@ -1,4 +1,5 @@
 $blue = #343496;
+$white = #fff;
 $darkGray = #444;
 $lightGray = #ccc;
 $accent = #699;
@@ -18,6 +19,16 @@ gradient(perc1, perc2, col1, col2)
   background: -webkit-linear-gradient(180deg, col1, perc1, col2, perc2)
   background: -moz-linear-gradient(180deg, col1, perc1, col2, perc2)
   background: linear-gradient(180deg, col1 perc1, col2 perc2)
+
+filter(on)
+  if on
+    filter: url(filters.svg#grayscale); /* Firefox 3.5+ */
+    filter: gray; /* IE6-9 */
+    -webkit-filter: grayscale(1); /* Google Chrome, Safari 6+ & Opera 15+ */
+  else
+    filter: none; /* IE6-9 */
+    -webkit-filter: grayscale(0); /* Google Chrome, Safari 6+ & Opera 15+ */
+
 
 *
   font-family Helvetica, sans-serif
@@ -57,9 +68,13 @@ hr.dashed
 .lightGray
   border-color $lightGray
   color $lightGray
-
+.white
+  border-color $white
+  color $white
 .accent
   color $accent
+.bg-accent
+  background $accent
 
 @media screen and (max-width: 768px)
   .sm-text-center
@@ -233,11 +248,20 @@ footer
   margin 0px
 .lg-thumbnail
   max-width 100%
+.md-thumbnail
+  max-width 500px
 
 .artist-block
   height 250px
   overflow hidden
   margin-bottom 20px
+  transition all .5s
+  &:hover
+    p
+      font-weight bolder
+      color $accent
+    img
+      filter(true)
 .artist-block.lg
   max-height 300px
   height auto
@@ -289,19 +313,16 @@ div.enlarge
       div
         margin 0px 0px 0px 50px
 
-.support-button
-  background-color rgba(0,0,0,0)
-  background-image url('../img/donate-button.png')
-  background-repeat no-repeat
-  background-position center
-  background-size 100% auto
-  height 40px
-  width 210px
-  border 0px!important
-  border-radius 15px
-  transition .5s all
-.support-button:hover
-  background-image url('../img/donate-button-hover.png')
+.donate-button
+  background $darkGray
+  color $white
+  span
+    margin 0px 5px 0px 3px
+    font-size 14px
+  &:hover
+    color $accent
+    background $white
+    border $lightGray 1px solid
 
 .link-div
   height 60px

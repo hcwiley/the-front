@@ -35,6 +35,10 @@ def fundraiser(req):
   args = common_args(req)
   return render_to_response("fundraiser.jade", args)
   
+def success(req):
+  args = common_args(req)
+  return render_to_response("success.jade", args)
+  
 def about(req):
   args = common_args(req)
   args['info'] = FrontInfo.objects.all()[0]

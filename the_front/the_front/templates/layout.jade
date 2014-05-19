@@ -55,17 +55,7 @@ html(lang="en")
       .row.info
         p The Front • 4100 St. Claude Avenue • New Orleans, LA 70117 • Saturday & Sunday 12 to 5 pm
       .row
-        form.text-center(action='https://www.paypal.com/cgi-bin/webscr', method='post', target='_top')
-          input(type='hidden', name='cmd', value='_donations')
-          input(type='hidden', name='business', value='nolafront@gmail.com')
-          input(type='hidden', name='lc', value='US')
-          input(type='hidden', name='item_name', value='The Front')
-          input(type='hidden', name='item_number', value='nolafront@gmail.com')
-          input(type='hidden', name='no_note', value='0')
-          input(type='hidden', name='currency_code', value='USD')
-          input(type='hidden', name='bn', value='PP-DonationsBF:donate-button.png:NonHostedGuest')
-          input.support-button(type='image', border='0', name='submit', alt='PayPal - The safer, easier way to pay online!')
-          img(alt='', border='0', src='https://www.paypalobjects.com/en_US/i/scr/pixel.gif', width='1', height='1')        
+        include donate_button
       .row
         .social
           a(href='https://twitter.com/TheFrontNOLA')

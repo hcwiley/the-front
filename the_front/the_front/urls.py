@@ -12,6 +12,7 @@ urlpatterns = patterns('',
      url(r'^$', 'the_front.views.home', name='home'),
      url(r'^fundraiser$', 'the_front.views.fundraiser', name='fundraiser'),
      url(r'^fundraiser/$', 'the_front.views.fundraiser', name='fundraiser'),
+     url(r'^fundraiser/success$', 'the_front.views.success', name='success'),
      url(r'^contact$', 'the_front.views.contact', name='contact'),
      url(r'^about$', 'the_front.views.about', name='about'),
 

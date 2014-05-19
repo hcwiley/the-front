@@ -4,9 +4,21 @@ block content
   .row
     .col-sm-10
       h1.pull-right bbq fundraiser
-    .col-sm-8.col-sm-offset-2
+    .col-sm-3.col-sm-offset-2
       h3 Sunday, June 8th
       h3 4pm - 10pm
+    .col-sm-3.col-sm-offset-2
+      br
+      br
+      form(action='https://www.paypal.com/cgi-bin/webscr', method='post', target='_top')
+        input(type='hidden', name='cmd', value='_s-xclick')
+        input(type='hidden', name='hosted_button_id', value='F5F7MGZXREPU4')
+        button.btn.btn-lg.btn-block.bg-accent.white
+          | Buy a Raffle Ticket
+          span.glyphicon.glyphicon-heart-empty
+        img(alt='', border='0', src='https://www.paypalobjects.com/en_US/i/scr/pixel.gif', width='1', height='1')
+  .row
+    .col-sm-10.col-sm-offset-1
       hr
   .row
     .col-sm-8.col-sm-offset-2
