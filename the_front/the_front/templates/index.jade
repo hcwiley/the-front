@@ -36,8 +36,8 @@ block content
             a(href='/fundraiser')
               img.img-thumbnail(src='#{STATIC_URL}img/bbq-poster.jpg')
             hr
-            .col-sm-8.col-sm-offset-2
-              include donate_button
+          .col-sm-8.pull-right
+            include donate_button
         h3.text-right shows
         //-hr.dashed
         {% for article in news %}
