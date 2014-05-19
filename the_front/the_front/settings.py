@@ -95,9 +95,9 @@ if IS_DEV:
   PIPELINE_YUGLIFY_BINARY = '/usr/local/share/npm/bin/yuglify'
   PIPELINE_UGLIFYJS_BINARY = '/usr/local/share/npm/lib/node_modules/yuglify/node_modules/uglify-js/bin/uglifyjs'
 else:
-  PIPELINE_STYLUS_BINARY =  '/home/hcwiley/webapps/front_streamer/node_modules/.bin/stylus'
-  PIPELINE_YUGLIFY_BINARY = '/home/hcwiley/webapps/front_streamer/node_modules/.bin/yuglify'
-  PIPELINE_UGLIFYJS_BINARY = '/home/hcwiley/webapps/front_streamer/lib/node_modules/yuglify/node_modules/uglify-js/bin/uglifyjs'
+  PIPELINE_STYLUS_BINARY =  '/home/hcwiley/webapps/front_stream/node_modules/.bin/stylus'
+  PIPELINE_YUGLIFY_BINARY = '/home/hcwiley/webapps/front_stream/node_modules/.bin/yuglify'
+  PIPELINE_UGLIFYJS_BINARY = '/home/hcwiley/webapps/front_stream/lib/node_modules/yuglify/node_modules/uglify-js/bin/uglifyjs'
 
 PIPELINE_CSS_COMPRESSOR = 'pipeline.compressors.yuglify.YuglifyCompressor'
 PIPELINE_JS_COMPRESSOR = 'pipeline.compressors.uglifyjs.UglifyJSCompressor'
