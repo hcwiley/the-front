@@ -22,7 +22,7 @@ class PressAdmin(admin.ModelAdmin):
   ]
 
 admin.site.register(NewsArticle, NewsArticleAdmin)
-admin.site.register(NewsMedia)
+#admin.site.register(NewsMedia)
 admin.site.register(Press, PressAdmin)
 #admin.site.register(PressMedia)
 admin.site.register(FrontInfo)

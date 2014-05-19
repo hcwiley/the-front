@@ -7,12 +7,21 @@ from tinymce.models import HTMLField
 
 class FrontInfo(models.Model):
   about = models.TextField(blank=True, null=True, default="")
+
+  class Meta:
+    verbose_name = u'About the Front'
+    verbose_name_plural = u'About the Front'
+
   def __unicode__(self):
     return "About Copy"
 
 class FAQ(models.Model):
   topic = models.CharField(max_length=100, blank=False, null=False, default="")
   answer = models.TextField(blank=True, null=True, default="")
+
+  class Meta:
+    verbose_name = u'FAQ'
+    verbose_name_plural = u'FAQs'
 
   def __unicode__(self):
     return self.topic
@@ -113,6 +122,8 @@ class NewsArticle(models.Model):
 
   class Meta:
     ordering = ['-date']
+    verbose_name = u'Show Info'
+    verbose_name_plural = u'Shows Info'
   
   def __unicode__(self):
     return "%s (%s)" % (self.name, self.date)
@@ -140,6 +151,8 @@ class Press(models.Model):
 
   class Meta:
     ordering = ['-date']
+    verbose_name = u'Press About the Front'
+    verbose_name_plural = u'Press About the Front'
   
   def __unicode__(self):
     return "%s (%s)" % (self.name, self.date)
