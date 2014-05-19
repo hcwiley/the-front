@@ -30,6 +30,10 @@ def home(req):
 def contact(req):
   args = common_args(req)
   return render_to_response("contact.jade", args)
+
+def fundraiser(req):
+  args = common_args(req)
+  return render_to_response("fundraiser.jade", args)
   
 def about(req):
   args = common_args(req)

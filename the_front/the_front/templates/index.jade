@@ -33,6 +33,9 @@ block content
             br
             br
           .col-sm-12
+            a(href='/fundraiser')
+              img.img-thumbnail(src='#{STATIC_URL}img/bbq-poster.jpg')
+            hr
             form.text-right.sm-text-center(action='https://www.paypal.com/cgi-bin/webscr', method='post', target='_top')
               input(type='hidden', name='cmd', value='_donations')
               input(type='hidden', name='business', value='nolafront@gmail.com')
