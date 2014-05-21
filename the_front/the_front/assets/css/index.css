@@ -369,3 +369,14 @@ div.enlarge {
   height: 60px;
   vertical-align: middle;
 }
+.items .well .collapse {
+  display: none;
+}
+.items .well .btn-xs:not(.drag-handler) {
+  display: none;
+}
+.items .well .drag-handler {
+  width: 60px;
+  height: 60px;
+  font-size: 40px;
+}
