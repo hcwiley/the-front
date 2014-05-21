@@ -43,7 +43,6 @@ class FrontMedia(models.Model):
   thumbnail = models.ImageField(upload_to='front_media/', default="", null=True, blank=True, editable=False)
   full_res_image = models.ImageField(upload_to='front_media/', default="", null=False, blank=False)
   is_default_image = models.BooleanField(default=False)
-  portrait = models.BooleanField(default=False)
 
   def __unicode__(self):
     return self.name
@@ -78,16 +77,40 @@ class FrontMedia(models.Model):
 
   def save(self, *args, **kwargs):
     super(FrontMedia, self).save()
+    self.rotateImage()
     self.saveImage()
     self.saveThumbnail()
+
+  def rotateImage(self):
+    from PIL import Image
+    path = self.full_res_image.path
+    image = Image.open(path)
+    try:
+      if self.left:
+        print "turn left"
+        image = image.rotate(90)
+    except:
+      pass
+    try:
+      if self.right:
+        print "turn right"
+        image = image.rotate(-90)
+    except:
+      pass
+    dot = path.rindex('.')
+    path = (path[:dot], path[dot:])
+    path = "%s-small%s" % (path[0], path[1])
+    image.save(path)
+    path = path.split(settings.MEDIA_ROOT)
+    path = path[1].strip("/")
+    self.full_res_image = "%s" % (path)
+    super(FrontMedia, self).save()
 
   def saveImage(self):
     from PIL import Image
     path = self.full_res_image.path
     image = Image.open(path)
     image.thumbnail((900,900), Image.ANTIALIAS)
-    if self.portrait:
-      image = image.rotate(-90)
     dot = path.rindex('.')
     path = (path[:dot], path[dot:])
     path = "%s-small%s" % (path[0], path[1])
@@ -102,8 +125,6 @@ class FrontMedia(models.Model):
     path = self.full_res_image.path
     image = Image.open(path)
     image.thumbnail((250,250), Image.ANTIALIAS)
-    if self.portrait:
-      image = image.rotate(-90)
     dot = path.rindex('.')
     path = (path[:dot], path[dot:])
     path = "%s-thumb%s" % (path[0], path[1])

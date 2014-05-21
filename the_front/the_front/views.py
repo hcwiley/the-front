@@ -38,6 +38,17 @@ def fundraiser(req):
 def success(req):
   args = common_args(req)
   return render_to_response("success.jade", args)
+
+def rotate(req, dirr, pk):
+  if req.user.is_authenticated():
+    image = ArtistMedia.objects.filter(id=pk)[0]
+    if dirr == 'left':
+      image.left = True
+    if dirr == 'right':
+      image.right = True
+    image.save()
+  return redirect(req.META['HTTP_REFERER'])
+  
   
 def about(req):
   args = common_args(req)

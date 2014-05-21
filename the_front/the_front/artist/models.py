@@ -63,3 +63,13 @@ class ArtistMedia(FrontMedia):
   class Meta:
     ordering = ('position', )
 
+  def admin_thumb(self):
+    html = ''
+    if self.thumbnail:
+      html += "<div class='col-xs-12'><div class='col-xs-6'><a class='btn btn-block btn-sm btn-success' href='/image/rotate/left/%s'>rotate left</a></div>"% (self.id)
+      html += "<div class='col-xs-6'><a class='btn btn-block btn-sm btn-danger' href='/image/rotate/right/%s'>rotate right</a></div></div>"% (self.id)
+      html += "<img src='%s'/>" % ( self.thumb())
+      return html
+    return ""
+  admin_thumb.allow_tags = True
+

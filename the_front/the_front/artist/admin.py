@@ -10,6 +10,9 @@ class ArtistMediaInlineSort(admin.StackedInline, SortableInline):
 class ArtistMediaInline(admin.TabularInline):
   model = ArtistMedia
   exclude = ['position']
+  fields = ['name', 'video_link', 'full_res_image', 'admin_thumb',
+      'is_default_image', 'dimensions', 'medium', 'year']
+  readonly_fields = ['admin_thumb']
 
 def generate_thumbnails(modeladmin, request, queryset):
   for obj in queryset:

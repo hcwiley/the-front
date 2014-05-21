@@ -21,6 +21,7 @@ urlpatterns = patterns('',
      url(r'^press', include('front_material.press.urls')),
      url(r'^links', include('front_material.links.urls')),
 
+     url(r'^image/rotate/(?P<dirr>.*)/(?P<pk>.*)$', 'the_front.views.rotate', name='rotate'),
      url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
      url(r'^admin/', include(admin.site.urls)),
      (r'^tinymce/', include('tinymce.urls')),
