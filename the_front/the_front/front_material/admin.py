@@ -21,10 +21,17 @@ class PressAdmin(admin.ModelAdmin):
     PressLinkInline,
   ]
 
+class LinkAdmin(admin.ModelAdmin):
+  model = Link
+
+  def queryset(self, request):
+        qs = super(LinkAdmin, self).queryset(request)
+        return qs.exclude(id__in=PressLink.objects.all())
+
 admin.site.register(NewsArticle, NewsArticleAdmin)
 #admin.site.register(NewsMedia)
 admin.site.register(Press, PressAdmin)
 #admin.site.register(PressMedia)
 admin.site.register(FrontInfo)
 admin.site.register(FAQ)
-admin.site.register(Link)
+admin.site.register(Link, LinkAdmin)
