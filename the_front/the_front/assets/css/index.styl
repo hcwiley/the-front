@@ -185,17 +185,23 @@ footer
     margin-top -1px!important
     a
       padding 6px 10px 7px 10px!important
-  .row
-    width 405px
-    margin 0px auto
+  .links
+    width 430px
+    @media screen and (max-width: 768px)
+      width auto
+      li.brand
+        margin auto
+        text-align center
+        float none
     padding-top 10px
+    margin 0px auto
   .social
     width 60px
     margin 0px auto
     img
       width 20px
       height 20px
-  .row.info
+  .info
     width 100%
     margin: 0px!important
     text-align center
