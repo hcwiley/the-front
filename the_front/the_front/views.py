@@ -35,6 +35,10 @@ def fundraiser(req):
   args = common_args(req)
   return render_to_response("fundraiser.jade", args)
   
+def film_festival(req):
+  args = common_args(req)
+  return render_to_response("film_festival.jade", args)
+  
 def success(req):
   args = common_args(req)
   return render_to_response("success.jade", args)
