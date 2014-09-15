@@ -32,8 +32,23 @@ block content
             br
             br
             br
-          .col-md-8.col-sm-10.pull-right
-            include donate_button
+        .row
+          .col-xs-12
+            a(href='/film-festival')
+              h4 Digital Natives
+              .col-xs-6
+                i film festival
+                p
+                i deadline:
+                i &nbsp;&nbsp;January 2
+              .col-xs-5.pull-right
+                img.img-thumbnail(src='#{STATIC_URL}img/film-festival.jpg')
+              .col-xs-12
+                br
+                button.button.btn-lg.btn-block.btn submit a film
+        .row
+          .col-sm-12
+            hr.dashed
         h3.text-right shows
         //-hr.dashed
         {% for article in news %}
@@ -46,7 +61,7 @@ block content
               {% else %}
               p #{article.artists_info|truncatewords:10}
               {% endif %}
-              .col-xs-3.pull-right
+              .col-xs-4.pull-right
                 img.img-thumbnail(src="#{article.thumb()}")
         {% if not forloop.last %}
         .row
