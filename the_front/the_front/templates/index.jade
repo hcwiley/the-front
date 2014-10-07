@@ -40,7 +40,14 @@ block content
                 img.img-thumbnail(src='#{STATIC_URL}img/digital-natives-flyer.jpg')
                 br
                 br
-                button.button.btn-lg.btn-block.btn submit a film
+                button.button.btn-lg.btn-block.btn
+                  img(width='30px', style='float: left; margin-left: 30px;', src='#{STATIC_URL}img/camera.png')
+                  | submit a film
+                .row
+                  .col-sm-12
+                    br
+                  p.text-center(style="font-size: 10px; color: #aaaaaa;")
+                    | camera icon by <a href="http://www.thenounproject.com/joszczepanska">Yo Szczepanska</a> from the <a href="http://www.thenounproject.com">Noun Project</a>
         .row
           .col-sm-12
             hr.dashed
@@ -64,3 +71,5 @@ block content
             hr.dashed
         {% endif %}
         {% endfor %}
+        .row
+          br

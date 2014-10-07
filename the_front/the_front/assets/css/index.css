@@ -117,6 +117,14 @@ header.navbar .logo-link h1 {
   font-size: 34px;
   padding-top: 0px;
 }
+header.navbar .navbar-collapse:not(.collapse) {
+  background: #fff;
+  width: 140px;
+  margin-left: 20px;
+}
+header.navbar .navbar-collapse:not(.collapse) li {
+  width: 100%;
+}
 header.navbar nav.navbar {
   display: block;
   padding: 0px;
@@ -126,8 +134,9 @@ header.navbar nav.navbar {
   float: none;
   margin: -100px auto 0px auto;
   height: 30px;
-  width: 460px;
+  width: 540px;
 }
+header.navbar nav.navbar #border 1pxsolid black,
 header.navbar nav.navbar .navbar-header {
   margin-left: 160px;
 }

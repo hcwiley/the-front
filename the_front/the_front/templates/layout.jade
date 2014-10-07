@@ -8,6 +8,16 @@ html(lang="en")
     {% compressed_js 'client' %}
     link(rel='icon', type='image/x-icon', href='./images/fav.png')
   body
+    #mailing-list.modal.fade
+      .modal-dialog.modal-lg
+          .modal-content
+            .modal-header
+              button.close(type='button', data-dismiss='modal')
+                span(aria-hidden='true') ×
+                span.sr-only Close
+              h2.modal-title Join The Front mailing list
+            .modal-body
+              iframe(src='http://eepurl.com/fNiSY', style="border:none;", width='100%', height=800)
     header.navbar
       .logo-link
         a(href='/')
@@ -34,6 +44,8 @@ html(lang="en")
               a(href='/links') links
             li.brand
               a(href='/contact') contact
+            li.brand
+              a(href='/#mailing-list', data-toggle="modal", data-target="#mailing-list") mailing list
     #content.container
       block content
     footer.container
