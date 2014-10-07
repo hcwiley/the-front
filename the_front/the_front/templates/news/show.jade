@@ -1,12 +1,12 @@
 extends layout
 
 block content
-  #enlarged.modal.fade.modal-lg(tabindex="-1",role="dialog", data-keyboard='true')
-    .modal-content
+  #enlarged.modal.fade(tabindex="-1",role="dialog", data-keyboard='true')
+    .modal-content.modal-lg
       .modal-header
         button.pull-right.close(type='button', data-dismiss='modal',aria-hidden="true")
           span.glyphicon.glyphicon-remove
-        h4.name
+        //h4.name
       .modal-body
         .img
 
