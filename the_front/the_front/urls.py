@@ -10,6 +10,7 @@ admin.autodiscover()
 urlpatterns = patterns('',
     # Examples:
      url(r'^$', 'the_front.views.home', name='home'),
+     url(r'^join$', 'the_front.views.join', name='join'),
      url(r'^fundraiser$', 'the_front.views.fundraiser', name='fundraiser'),
      url(r'^fundraiser/$', 'the_front.views.fundraiser', name='fundraiser'),
      url(r'^film-festival$', 'the_front.views.film_festival', name='film_festival'),
