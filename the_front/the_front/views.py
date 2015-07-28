@@ -8,9 +8,9 @@ from front_material.models import NewsArticle, FrontInfo, FAQ
 def common_args(request):
     """
     The common arguments for all gallery views.
-    
+
     STATIC_URL: static url from settings
-    """ 
+    """
     user = request.user if request.user.is_authenticated() else None
     args = {
                 'STATIC_URL' : settings.STATIC_URL,
@@ -26,7 +26,7 @@ def home(req):
   args['artists'] = Artist.objects.all()
   args['news'] = NewsArticle.objects.all()[:5]
   return render_to_response("index.jade", args)
-  
+
 def contact(req):
   args = common_args(req)
   return render_to_response("contact.jade", args)
@@ -34,11 +34,15 @@ def contact(req):
 def fundraiser(req):
   args = common_args(req)
   return render_to_response("fundraiser.jade", args)
-  
+
+def join(req):
+  args = common_args(req)
+  return render_to_response("join.jade", args)
+
 def film_festival(req):
   args = common_args(req)
   return render_to_response("film_festival.jade", args)
-  
+
 def success(req):
   args = common_args(req)
   return render_to_response("success.jade", args)
@@ -52,12 +56,11 @@ def rotate(req, dirr, pk):
       image.right = True
     image.save()
   return redirect(req.META['HTTP_REFERER'])
-  
-  
+
+
 def about(req):
   args = common_args(req)
   args['info'] = FrontInfo.objects.all()[0]
   args['faqs'] = FAQ.objects.all()
   args['artists'] = Artist.objects.all()
   return render_to_response("about.jade", args)
-  
